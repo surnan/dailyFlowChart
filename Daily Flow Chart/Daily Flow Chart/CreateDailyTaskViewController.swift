@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CreateDailyTaskViewControllerDelegate {
+    func addElementToTasks(name: String)
+}
+
 
 class CreateDailyTaskViewController: UIViewController {
     
@@ -15,14 +19,12 @@ class CreateDailyTaskViewController: UIViewController {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 20)
         label.text = "Name: "
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let nameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter Name"
-        textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
@@ -30,19 +32,17 @@ class CreateDailyTaskViewController: UIViewController {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 20)
         label.text = "Time: "
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let eventTimePicker : UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .time
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
         return datePicker
     }()
     
     
-    
+    var delegate: CreateDailyTaskViewControllerDelegate?
     
     @objc private func handleCancel(){
         self.dismiss(animated: true, completion: nil)
@@ -52,17 +52,20 @@ class CreateDailyTaskViewController: UIViewController {
         guard let name = nameTextField.text, !name.isEmpty else { print("Empty Name"); return}
         print("nameTextField.text = \(nameTextField.text!)")
         print("eventTimePicker.date = \(eventTimePicker.date)")
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: {
+            self.delegate?.addElementToTasks(name: self.nameTextField.text!)
+        })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.white
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(handleSave))
         
-        [nameLabel, nameTextField, dateLabel, eventTimePicker].forEach {view.addSubview($0)}
+        [nameLabel, nameTextField, dateLabel, eventTimePicker].forEach {view.addSubview($0); $0.translatesAutoresizingMaskIntoConstraints = false}
         
         //
         nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

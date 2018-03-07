@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DailyTasksViewController: UITableViewController {
+class DailyTasksViewController: UITableViewController, CreateDailyTaskViewControllerDelegate {
 
     let reuseID = "TaskTable"
     var tasks = [
@@ -17,6 +17,14 @@ class DailyTasksViewController: UITableViewController {
     "Peach",
     "Watermelon"
     ]
+    
+    //MARK: delegate functions
+    func addElementToTasks(name: String){
+        tasks.append(name)
+        tableView.insertRows(at: [IndexPath.init(row: tasks.count-1, section: 0)] , with: .right)
+    }
+    
+    
     
     //MARK: uitableview functions
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -35,6 +43,7 @@ class DailyTasksViewController: UITableViewController {
     @objc private func handleAdd(){
         print("Add pressed")
         let myCreateDailyTaskView = CreateDailyTaskViewController()
+        myCreateDailyTaskView.delegate = self
         let navController = UINavigationController(rootViewController: myCreateDailyTaskView)
         present(navController, animated: true)
     }
