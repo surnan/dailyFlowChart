@@ -21,18 +21,18 @@ class DailyTasksViewController: UITableViewController, CreateDailyTaskViewContro
         tableView.insertRows(at: [IndexPath.init(row: tasks.count-1, section: 0)] , with: .right)
     }
     
-    //MARK: uitableview functions
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath)
-        cell.textLabel?.text = tasks[indexPath.row].name
-        cell.backgroundColor = UIColor.yellow
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
-    }
-
+//    //MARK: uitableview functions
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath)
+//        cell.textLabel?.text = tasks[indexPath.row].name
+//        cell.backgroundColor = UIColor.yellow
+//        return cell
+//    }
+//    
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return tasks.count
+//    }
+// 
     
     //MARK: Other functions
     @objc private func handleAdd(){

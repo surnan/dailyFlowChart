@@ -15,6 +15,7 @@
 		84282C96204F97470040BC7A /* CreateDailyTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84282C95204F97470040BC7A /* CreateDailyTaskViewController.swift */; };
 		845F080420514BF500FF2673 /* TaskModelCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 845F080220514BF500FF2673 /* TaskModelCoreData.xcdatamodeld */; };
 		84C58B4E205187F8009F3E91 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C58B4D205187F8009F3E91 /* CoreDataManager.swift */; };
+		84C58B522051E8BD009F3E91 /* DailyTasksViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C58B512051E8BD009F3E91 /* DailyTasksViewController+UITableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		84282C95204F97470040BC7A /* CreateDailyTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDailyTaskViewController.swift; sourceTree = "<group>"; };
 		845F080320514BF500FF2673 /* TaskModelCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskModelCoreData.xcdatamodel; sourceTree = "<group>"; };
 		84C58B4D205187F8009F3E91 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		84C58B512051E8BD009F3E91 /* DailyTasksViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyTasksViewController+UITableView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +62,42 @@
 		84282C7E204F83110040BC7A /* Daily Flow Chart */ = {
 			isa = PBXGroup;
 			children = (
-				84282C7F204F83110040BC7A /* AppDelegate.swift */,
-				84282C81204F83110040BC7A /* DailyTasksViewController.swift */,
-				84282C86204F83110040BC7A /* Assets.xcassets */,
-				84282C88204F83110040BC7A /* LaunchScreen.storyboard */,
+				84C58B552051EB26009F3E91 /* CoreData */,
+				84C58B542051EB0C009F3E91 /* Misc */,
+				84C58B532051EAF7009F3E91 /* DailyTasks */,
 				84282C8B204F83110040BC7A /* Info.plist */,
 				84282C91204F840A0040BC7A /* UIColor+theme.swift */,
 				84282C95204F97470040BC7A /* CreateDailyTaskViewController.swift */,
-				845F080220514BF500FF2673 /* TaskModelCoreData.xcdatamodeld */,
-				84C58B4D205187F8009F3E91 /* CoreDataManager.swift */,
 			);
 			path = "Daily Flow Chart";
+			sourceTree = "<group>";
+		};
+		84C58B532051EAF7009F3E91 /* DailyTasks */ = {
+			isa = PBXGroup;
+			children = (
+				84C58B512051E8BD009F3E91 /* DailyTasksViewController+UITableView.swift */,
+				84282C81204F83110040BC7A /* DailyTasksViewController.swift */,
+			);
+			path = DailyTasks;
+			sourceTree = "<group>";
+		};
+		84C58B542051EB0C009F3E91 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				84282C88204F83110040BC7A /* LaunchScreen.storyboard */,
+				84282C7F204F83110040BC7A /* AppDelegate.swift */,
+				84282C86204F83110040BC7A /* Assets.xcassets */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		84C58B552051EB26009F3E91 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				84C58B4D205187F8009F3E91 /* CoreDataManager.swift */,
+				845F080220514BF500FF2673 /* TaskModelCoreData.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +174,7 @@
 				84C58B4E205187F8009F3E91 /* CoreDataManager.swift in Sources */,
 				845F080420514BF500FF2673 /* TaskModelCoreData.xcdatamodeld in Sources */,
 				84282C92204F840A0040BC7A /* UIColor+theme.swift in Sources */,
+				84C58B522051E8BD009F3E91 /* DailyTasksViewController+UITableView.swift in Sources */,
 				84282C82204F83110040BC7A /* DailyTasksViewController.swift in Sources */,
 				84282C80204F83110040BC7A /* AppDelegate.swift in Sources */,
 				84282C96204F97470040BC7A /* CreateDailyTaskViewController.swift in Sources */,
