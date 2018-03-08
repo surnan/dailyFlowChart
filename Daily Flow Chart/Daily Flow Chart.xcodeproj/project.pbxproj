@@ -13,6 +13,8 @@
 		84282C8A204F83110040BC7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84282C88204F83110040BC7A /* LaunchScreen.storyboard */; };
 		84282C92204F840A0040BC7A /* UIColor+theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84282C91204F840A0040BC7A /* UIColor+theme.swift */; };
 		84282C96204F97470040BC7A /* CreateDailyTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84282C95204F97470040BC7A /* CreateDailyTaskViewController.swift */; };
+		845F080420514BF500FF2673 /* TaskModelCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 845F080220514BF500FF2673 /* TaskModelCoreData.xcdatamodeld */; };
+		84C58B4E205187F8009F3E91 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C58B4D205187F8009F3E91 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		84282C8B204F83110040BC7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84282C91204F840A0040BC7A /* UIColor+theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+theme.swift"; sourceTree = "<group>"; };
 		84282C95204F97470040BC7A /* CreateDailyTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDailyTaskViewController.swift; sourceTree = "<group>"; };
+		845F080320514BF500FF2673 /* TaskModelCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskModelCoreData.xcdatamodel; sourceTree = "<group>"; };
+		84C58B4D205187F8009F3E91 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				84282C8B204F83110040BC7A /* Info.plist */,
 				84282C91204F840A0040BC7A /* UIColor+theme.swift */,
 				84282C95204F97470040BC7A /* CreateDailyTaskViewController.swift */,
+				845F080220514BF500FF2673 /* TaskModelCoreData.xcdatamodeld */,
+				84C58B4D205187F8009F3E91 /* CoreDataManager.swift */,
 			);
 			path = "Daily Flow Chart";
 			sourceTree = "<group>";
@@ -138,6 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C58B4E205187F8009F3E91 /* CoreDataManager.swift in Sources */,
+				845F080420514BF500FF2673 /* TaskModelCoreData.xcdatamodeld in Sources */,
 				84282C92204F840A0040BC7A /* UIColor+theme.swift in Sources */,
 				84282C82204F83110040BC7A /* DailyTasksViewController.swift in Sources */,
 				84282C80204F83110040BC7A /* AppDelegate.swift in Sources */,
@@ -318,6 +326,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		845F080220514BF500FF2673 /* TaskModelCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				845F080320514BF500FF2673 /* TaskModelCoreData.xcdatamodel */,
+			);
+			currentVersion = 845F080320514BF500FF2673 /* TaskModelCoreData.xcdatamodel */;
+			path = TaskModelCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 84282C74204F83110040BC7A /* Project object */;
 }
