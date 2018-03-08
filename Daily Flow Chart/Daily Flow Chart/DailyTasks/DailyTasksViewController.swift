@@ -28,11 +28,11 @@ class DailyTasksViewController: UITableViewController, CreateDailyTaskViewContro
 //        cell.backgroundColor = UIColor.yellow
 //        return cell
 //    }
-//    
+//
 //    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return tasks.count
 //    }
-// 
+//
     
     //MARK: Other functions
     @objc private func handleAdd(){

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 extension DailyTasksViewController {
     
@@ -24,14 +25,28 @@ extension DailyTasksViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (rowAction, indexPath) in
-            print("Deletion Action chosen")
+            let company = self.tasks[indexPath.row]
+            print("Deletion Action chosen", company)
+            
+            //reverse order of the next two lines and it crashes with '***Assertion Failure'
+            self.tasks.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            //reverse order of the above two lines and it crashes with '***Assertion Failure'
+
+            let context = CoreDataManager.shared.persistentContainer.viewContext
+            context.delete(company)
+            
+            do {
+                try context.save()
+            } catch let deleteError {
+                print("Unable to delete from row from Store", deleteError)
+            }
         }
         
-        let editAction = UITableViewRowAction(style: .destructive, title: "Edit") { (rowAction, indexPath) in
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (rowAction, indexPath) in
             print("Edit Action chosen")
         }
-        
+        editAction.backgroundColor = UIColor.green
         return [deleteAction, editAction]
     }
-    
 }
