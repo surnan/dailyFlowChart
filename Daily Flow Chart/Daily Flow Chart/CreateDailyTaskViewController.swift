@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 protocol CreateDailyTaskViewControllerDelegate {
-    func addElementToTasks(name: String)
+    func addElementToTasks(task: Task)
 }
 
 
@@ -50,11 +51,20 @@ class CreateDailyTaskViewController: UIViewController {
     
     @objc private func handleSave(){
         guard let name = nameTextField.text, !name.isEmpty else { print("Empty Name"); return}
-        print("nameTextField.text = \(nameTextField.text!)")
-        print("eventTimePicker.date = \(eventTimePicker.date)")
-        self.dismiss(animated: true, completion: {
-            self.delegate?.addElementToTasks(name: self.nameTextField.text!)
-        })
+        
+        self.dismiss(animated: true ){
+            let myContext = CoreDataManager.shared.persistentContainer.viewContext
+            let myTask = NSEntityDescription.insertNewObject(forEntityName: "Task", into: myContext)
+            myTask.setValue(self.nameTextField.text, forKey: "name")
+            self.delegate?.addElementToTasks(task: myTask as! Task)
+            
+            do {
+                try myContext.save()
+            } catch let handleSaveErr {
+                print("Unable to save task:", handleSaveErr)
+            }
+        }
+   
     }
     
     override func viewDidLoad() {
