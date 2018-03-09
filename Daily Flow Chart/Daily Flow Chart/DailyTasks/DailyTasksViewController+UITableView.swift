@@ -52,6 +52,8 @@ extension DailyTasksViewController {
     //this function header exactly matches the closure parameters of 'deleteAction'
     private func editHandlerFunction(action: UITableViewRowAction, indexPath: IndexPath){
         let myCreateDailyTaskViewController = CreateDailyTaskViewController()
+        myCreateDailyTaskViewController.currentTask = tasks[indexPath.row]
+        myCreateDailyTaskViewController.delegate = self
         let myNavController = UINavigationController(rootViewController: myCreateDailyTaskViewController)
         present(myNavController, animated: true, completion: nil)
     }

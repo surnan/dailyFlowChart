@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class DailyTasksViewController: UITableViewController, CreateDailyTaskViewControllerDelegate {
+  
 
     let reuseID = "TaskTable"
     
@@ -20,6 +21,18 @@ class DailyTasksViewController: UITableViewController, CreateDailyTaskViewContro
         tasks.append(task)
         tableView.insertRows(at: [IndexPath.init(row: tasks.count-1, section: 0)] , with: .right)
     }
+    
+    func editExistingTask(task: Task) {
+        
+ 
+        guard let temp = tasks.index(of: task) else {print("Error trying to find editing element in tasks:"); return}
+        
+        
+        let myIndexPath = IndexPath(row: temp, section: 0)
+        tableView.reloadRows(at: [myIndexPath], with: .middle)
+    }
+    
+    
     
     //MARK: Other functions
     @objc private func handleAdd(){

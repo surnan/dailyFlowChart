@@ -11,6 +11,7 @@ import CoreData
 
 protocol CreateDailyTaskViewControllerDelegate {
     func addElementToTasks(task: Task)
+    func editExistingTask(task:Task)
 }
 
 
@@ -53,6 +54,31 @@ class CreateDailyTaskViewController: UIViewController {
     @objc private func handleSave(){
         guard let name = nameTextField.text, !name.isEmpty else { print("Empty Name"); return}
         
+        if currentTask == nil {
+            savingNewTask()
+        } else {
+            editingTask()
+        }
+
+    }
+    
+    private func editingTask(){
+        self.dismiss(animated: true ){
+            let myContext = CoreDataManager.shared.persistentContainer.viewContext
+            
+            guard let myCurrentTask = self.currentTask else {print("Something Weird");return}
+            myCurrentTask.name = self.nameTextField.text
+            self.delegate?.editExistingTask(task: myCurrentTask)
+        
+            do {
+                try myContext.save()
+            } catch let handleSaveErr {
+                print("Unable to save task:", handleSaveErr)
+            }
+        }
+    }
+    
+    private func savingNewTask() {
         self.dismiss(animated: true ){
             let myContext = CoreDataManager.shared.persistentContainer.viewContext
             let myTask = NSEntityDescription.insertNewObject(forEntityName: "Task", into: myContext)
@@ -65,7 +91,6 @@ class CreateDailyTaskViewController: UIViewController {
                 print("Unable to save task:", handleSaveErr)
             }
         }
-   
     }
     
     override func viewDidLoad() {
@@ -75,7 +100,10 @@ class CreateDailyTaskViewController: UIViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(handleSave))
-        navigationItem.title = "Create Task"
+        
+        
+        navigationItem.title = currentTask == nil ? "Create New Task" : "Editing \(currentTask?.name ?? "")"
+
         
         [nameLabel, nameTextField, dateLabel, eventTimePicker].forEach {view.addSubview($0); $0.translatesAutoresizingMaskIntoConstraints = false}
         
