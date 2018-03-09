@@ -44,6 +44,7 @@ class CreateDailyTaskViewController: UIViewController {
     
     
     var delegate: CreateDailyTaskViewControllerDelegate?
+    var currentTask: Task?
     
     @objc private func handleCancel(){
         self.dismiss(animated: true, completion: nil)
@@ -74,6 +75,7 @@ class CreateDailyTaskViewController: UIViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(handleSave))
+        navigationItem.title = "Create Task"
         
         [nameLabel, nameTextField, dateLabel, eventTimePicker].forEach {view.addSubview($0); $0.translatesAutoresizingMaskIntoConstraints = false}
         

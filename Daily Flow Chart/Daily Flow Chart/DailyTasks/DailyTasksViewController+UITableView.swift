@@ -43,10 +43,16 @@ extension DailyTasksViewController {
             }
         }
         
-        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (rowAction, indexPath) in
-            print("Edit Action chosen")
-        }
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: editHandlerFunction)
+
         editAction.backgroundColor = UIColor.green
         return [deleteAction, editAction]
+    }
+    
+    //this function header exactly matches the closure parameters of 'deleteAction'
+    private func editHandlerFunction(action: UITableViewRowAction, indexPath: IndexPath){
+        let myCreateDailyTaskViewController = CreateDailyTaskViewController()
+        let myNavController = UINavigationController(rootViewController: myCreateDailyTaskViewController)
+        present(myNavController, animated: true, completion: nil)
     }
 }
