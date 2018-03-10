@@ -72,6 +72,7 @@ class CreateDailyTaskViewController: UIViewController {
             
             guard let myCurrentTask = self.currentTask else {print("Something Weird");return}
             myCurrentTask.name = self.nameTextField.text
+            myCurrentTask.date = self.eventTimePicker.date
             self.delegate?.editExistingTask(task: myCurrentTask)
         
             do {
@@ -87,6 +88,8 @@ class CreateDailyTaskViewController: UIViewController {
             let myContext = CoreDataManager.shared.persistentContainer.viewContext
             let myTask = NSEntityDescription.insertNewObject(forEntityName: "Task", into: myContext)
             myTask.setValue(self.nameTextField.text, forKey: "name")
+            myTask.setValue(self.eventTimePicker.date, forKey: "date")
+
             self.delegate?.addElementToTasks(task: myTask as! Task)
             
             do {

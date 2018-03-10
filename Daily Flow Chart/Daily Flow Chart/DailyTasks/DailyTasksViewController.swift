@@ -11,9 +11,7 @@ import CoreData
 
 class DailyTasksViewController: UITableViewController, CreateDailyTaskViewControllerDelegate {
   
-
     let reuseID = "TaskTable"
-    
     var tasks = [Task]()
     
     //MARK: delegate functions
@@ -23,15 +21,10 @@ class DailyTasksViewController: UITableViewController, CreateDailyTaskViewContro
     }
     
     func editExistingTask(task: Task) {
-        
- 
         guard let temp = tasks.index(of: task) else {print("Error trying to find editing element in tasks:"); return}
-        
-        
         let myIndexPath = IndexPath(row: temp, section: 0)
         tableView.reloadRows(at: [myIndexPath], with: .middle)
     }
-    
     
     
     //MARK: Other functions

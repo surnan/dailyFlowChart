@@ -14,8 +14,31 @@ extension DailyTasksViewController {
     //MARK: uitableview functions
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath)
-        cell.textLabel?.text = tasks[indexPath.row].name
         cell.backgroundColor = UIColor.yellow
+        
+        
+//        var date : nsd
+        
+        var cellTextLabel = ""
+        if let cellName = tasks[indexPath.row].name{
+            cellTextLabel = "\(cellName)"
+        }
+        
+        var cellTextLabel2 = ""
+        if let cellDate = tasks[indexPath.row].date {
+            let myDateFormater = DateFormatter()
+            myDateFormater.dateFormat = "hh:mm a"
+            cellTextLabel2 = myDateFormater.string(from: cellDate)
+        } else {
+            cellTextLabel2 = "NONE SAVED"
+        }
+
+        cell.textLabel?.text = "\(cellTextLabel) ... \(cellTextLabel2)"
+        
+        
+        
+        
+        
         return cell
     }
     
