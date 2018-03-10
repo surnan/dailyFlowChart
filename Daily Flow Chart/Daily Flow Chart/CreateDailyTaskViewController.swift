@@ -45,7 +45,11 @@ class CreateDailyTaskViewController: UIViewController {
     
     
     var delegate: CreateDailyTaskViewControllerDelegate?
-    var currentTask: Task?
+    var currentTask: Task? {
+        didSet {
+            nameTextField.text = currentTask?.name
+        }
+    }
     
     @objc private func handleCancel(){
         self.dismiss(animated: true, completion: nil)
