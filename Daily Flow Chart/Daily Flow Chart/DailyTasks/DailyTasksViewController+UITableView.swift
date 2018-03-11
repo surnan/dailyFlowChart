@@ -37,8 +37,18 @@ extension DailyTasksViewController {
         
         
         
+//        if let cellImage = UIImage(data: tasks[indexPath.row].picture!) {
+//            cell.imageView?.image = cellImage
+//        } else {
+//            cell.imageView?.image = #imageLiteral(resourceName: "select_photo_empty")
+//        }
+//
+
+        if let cellImageData = tasks[indexPath.row].picture {
+        let imageData = UIImage(data: cellImageData)
+        cell.imageView?.image = imageData
         
-        
+        }
         return cell
     }
     
