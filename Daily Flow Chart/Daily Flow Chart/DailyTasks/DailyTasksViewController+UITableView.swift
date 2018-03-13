@@ -14,7 +14,7 @@ extension DailyTasksViewController {
     //MARK: uitableview functions
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath)
-        cell.backgroundColor = UIColor.yellow
+        cell.backgroundColor = UIColor.lightBlue
         
         
 //        var date : nsd
@@ -35,21 +35,27 @@ extension DailyTasksViewController {
 
         cell.textLabel?.text = "\(cellTextLabel) ... \(cellTextLabel2)"
         
-        
-        
-//        if let cellImage = UIImage(data: tasks[indexPath.row].picture!) {
-//            cell.imageView?.image = cellImage
-//        } else {
-//            cell.imageView?.image = #imageLiteral(resourceName: "select_photo_empty")
-//        }
-//
-
         if let cellImageData = tasks[indexPath.row].picture {
         let imageData = UIImage(data: cellImageData)
         cell.imageView?.image = imageData
         
         }
         return cell
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "Please Create a Task...."
+        label.textColor = UIColor.white
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        return label
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return  tasks.count != 0 ?  0:100
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,7 +83,6 @@ extension DailyTasksViewController {
         }
         
         let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: editHandlerFunction)
-
         editAction.backgroundColor = UIColor.green
         return [deleteAction, editAction]
     }

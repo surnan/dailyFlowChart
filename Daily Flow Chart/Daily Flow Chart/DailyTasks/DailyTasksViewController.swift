@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class DailyTasksViewController: UITableViewController, CreateDailyTaskViewControllerDelegate {
-  
+    
     let reuseID = "TaskTable"
     var tasks = [Task]()
     
@@ -38,15 +38,51 @@ class DailyTasksViewController: UITableViewController, CreateDailyTaskViewContro
     
     @objc private func handleReload(){
         print("Reload pressed")
+        
+        
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        
+        //below works but let's try another method
+        //                tasks.forEach { (task) in
+        //                    context.delete(task)
+        //                }
+        
+        //below also works
+        //        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: Task.fetchRequest())  //fetchRequest is NSObject method
+        
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<Task>(entityName: "Task") as! NSFetchRequest<NSFetchRequestResult>)
+        
+        do {
+            try context.execute(batchDeleteRequest)
+            var indexPathsToRemove = [IndexPath]()
+            
+            for (index, _) in tasks.enumerated() {
+                let myIndexPath = IndexPath(row: index, section: 0)
+                indexPathsToRemove.append(myIndexPath)
+            }
+            
+            tasks.removeAll()
+            tableView.deleteRows(at: indexPathsToRemove, with: .top)
+        } catch let batchDeleteErr {
+            print("Failed batchDelete on CoreData:", batchDeleteErr)
+        }
+        
+        //below removes everything but there's no fancy, pretty animation
+        //            tasks.removeAll()
+        //            tableView.reloadData()
+        
+        //            tasks.forEach({ (task) in
+        //                tasks.index(of: task)  <-- returns optional
+        //            })
     }
     
     
     //MARK: UI functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.lightBlue
+        view.backgroundColor = UIColor.black
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseID)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reload", style: .plain, target: self, action: #selector(handleReload))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReload))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(handleAdd))
         
         navigationItem.title = "Daily Tasks"

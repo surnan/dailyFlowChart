@@ -70,6 +70,17 @@ class CreateDailyTaskViewController: UIViewController, UIImagePickerControllerDe
             if let cellImageData = currentTask?.picture{
                 let imageData = UIImage(data: cellImageData)
                 taskImageView.image = imageData
+                
+             
+                
+                ////////
+                // Turn square avator into circular
+                self.taskImageView.layer.cornerRadius = self.taskImageView.frame.width / 2
+                self.taskImageView.clipsToBounds = true
+                
+                self.taskImageView.layer.borderColor = UIColor.black.cgColor
+                self.taskImageView.layer.borderWidth = 2
+                
             }
         }
     }
@@ -92,6 +103,16 @@ class CreateDailyTaskViewController: UIViewController, UIImagePickerControllerDe
         print(info)   //2
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.taskImageView.image = image
+            
+            ////////
+            // Turn square avator into circular
+            self.taskImageView.layer.cornerRadius = self.taskImageView.frame.width / 2
+            self.taskImageView.clipsToBounds = true
+            
+            self.taskImageView.layer.borderColor = UIColor.black.cgColor
+            self.taskImageView.layer.borderWidth = 2
+            
+            
             dismiss(animated: true, completion: nil)
         }else{
             print("Something went wrong")
@@ -117,6 +138,11 @@ class CreateDailyTaskViewController: UIViewController, UIImagePickerControllerDe
             guard let myCurrentTask = self.currentTask else {print("Something Weird");return}
             myCurrentTask.name = self.nameTextField.text
             myCurrentTask.date = self.eventTimePicker.date
+            
+            guard let image = self.taskImageView.image else {return}
+            let imageData = UIImageJPEGRepresentation(image, 0.8)
+            myCurrentTask.picture = imageData
+            
             self.delegate?.editExistingTask(task: myCurrentTask)
             do {
                 try myContext.save()
