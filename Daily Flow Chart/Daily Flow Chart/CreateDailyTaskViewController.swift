@@ -101,7 +101,20 @@ class CreateDailyTaskViewController: UIViewController, UIImagePickerControllerDe
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print(info)   //2
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        
+        if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            self.taskImageView.image = editedImage
+
+            ////////
+            // Turn square avator into circular
+            self.taskImageView.layer.cornerRadius = self.taskImageView.frame.width / 2
+            self.taskImageView.clipsToBounds = true
+
+            self.taskImageView.layer.borderColor = UIColor.black.cgColor
+            self.taskImageView.layer.borderWidth = 2
+            dismiss(animated: true, completion: nil)
+            
+        } else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.taskImageView.image = image
             
             ////////

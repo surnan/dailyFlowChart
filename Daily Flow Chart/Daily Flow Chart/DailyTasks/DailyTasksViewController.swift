@@ -81,7 +81,7 @@ class DailyTasksViewController: UITableViewController, CreateDailyTaskViewContro
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseID)
+        tableView.register(DailyTaskListCell.self, forCellReuseIdentifier: reuseID)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReload))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(handleAdd))
         
