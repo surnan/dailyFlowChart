@@ -55,9 +55,16 @@ class DailyTaskListCell: UITableViewCell {
     }()
     
     let iconImageView : UIImageView = {
-        let myImage = UIImageView()
-        myImage.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        myImage.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        let myImage = UIImageView(image: #imageLiteral(resourceName: "select_photo_empty"))
+        myImage.contentMode = .scaleToFill
+        myImage.layer.cornerRadius = 20
+        myImage.clipsToBounds = true
+        myImage.layer.borderColor = UIColor.darkBlue.cgColor
+        myImage.layer.borderWidth = 1
+        
+        
+//        myImage.widthAnchor.constraint(equalToConstant: 20).isActive = true
+//        myImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
         return myImage
     }()
     
@@ -70,9 +77,16 @@ class DailyTaskListCell: UITableViewCell {
         [nameLabel, dateLabel, iconImageView].forEach {$0.translatesAutoresizingMaskIntoConstraints = false}
         [nameLabel, dateLabel, iconImageView].forEach {addSubview($0)}
         
-        iconImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
-        iconImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+//        iconImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
+//        iconImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+//        iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+
+        
+        iconImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        iconImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        iconImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+        iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+
         
         nameLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 10).isActive = true
         nameLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true

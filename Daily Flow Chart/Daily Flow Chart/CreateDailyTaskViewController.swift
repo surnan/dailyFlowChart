@@ -54,6 +54,7 @@ class CreateDailyTaskViewController: UIViewController, UIImagePickerControllerDe
     
     
     var delegate: CreateDailyTaskViewControllerDelegate?
+    
     var currentTask: Task? {
         didSet {
             nameTextField.text = currentTask?.name
@@ -69,9 +70,8 @@ class CreateDailyTaskViewController: UIViewController, UIImagePickerControllerDe
             
             if let cellImageData = currentTask?.picture{
                 let imageData = UIImage(data: cellImageData)
+                print("IMAGE CARRIED OVER")
                 taskImageView.image = imageData
-                
-             
                 
                 ////////
                 // Turn square avator into circular
@@ -80,7 +80,6 @@ class CreateDailyTaskViewController: UIViewController, UIImagePickerControllerDe
                 
                 self.taskImageView.layer.borderColor = UIColor.black.cgColor
                 self.taskImageView.layer.borderWidth = 2
-                
             }
         }
     }
@@ -193,7 +192,7 @@ class CreateDailyTaskViewController: UIViewController, UIImagePickerControllerDe
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(handleSave))
-        navigationItem.title = currentTask == nil ? "Create New Task" : "Editing \(currentTask?.name ?? "")"
+        navigationItem.title = currentTask == nil ? "##Create New Task" : "Editing \(currentTask?.name ?? "")"
         
         [nameLabel, nameTextField, dateLabel, eventTimePicker, taskImageView].forEach {
             view.addSubview($0)

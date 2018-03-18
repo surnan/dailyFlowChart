@@ -29,6 +29,10 @@ extension DailyTasksViewController {
     }
     
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return  tasks.count != 0 ?  0:100
     }
