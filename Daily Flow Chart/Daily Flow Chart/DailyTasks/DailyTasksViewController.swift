@@ -9,22 +9,12 @@
 import UIKit
 import CoreData
 
-class DailyTasksViewController: UITableViewController, CreateDailyTaskViewControllerDelegate {
+class DailyTasksViewController: UITableViewController {
     
     let reuseID = "TaskTable"
     var tasks = [Task]()
     
-    //MARK: delegate functions
-    func addElementToTasks(task: Task){
-        tasks.append(task)
-        tableView.insertRows(at: [IndexPath.init(row: tasks.count-1, section: 0)] , with: .right)
-    }
-    
-    func editExistingTask(task: Task) {
-        guard let temp = tasks.index(of: task) else {print("Error trying to find editing element in tasks:"); return}
-        let myIndexPath = IndexPath(row: temp, section: 0)
-        tableView.reloadRows(at: [myIndexPath], with: .middle)
-    }
+
     
     
     //MARK: Other functions

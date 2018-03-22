@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841807C0205F547E002CD7AF /* DailyTasksViewController+Delegate+CreateDailyTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841807BF205F547E002CD7AF /* DailyTasksViewController+Delegate+CreateDailyTaskViewController.swift */; };
 		84282C80204F83110040BC7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84282C7F204F83110040BC7A /* AppDelegate.swift */; };
 		84282C82204F83110040BC7A /* DailyTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84282C81204F83110040BC7A /* DailyTasksViewController.swift */; };
 		84282C87204F83110040BC7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84282C86204F83110040BC7A /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		841807BF205F547E002CD7AF /* DailyTasksViewController+Delegate+CreateDailyTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyTasksViewController+Delegate+CreateDailyTaskViewController.swift"; sourceTree = "<group>"; };
 		84282C7C204F83110040BC7A /* Daily Flow Chart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily Flow Chart.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84282C7F204F83110040BC7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84282C81204F83110040BC7A /* DailyTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			children = (
 				84C58B512051E8BD009F3E91 /* DailyTasksViewController+UITableView.swift */,
 				84282C81204F83110040BC7A /* DailyTasksViewController.swift */,
+				841807BF205F547E002CD7AF /* DailyTasksViewController+Delegate+CreateDailyTaskViewController.swift */,
 				848977C5205DA26800C64319 /* DailyTaskListCell.swift */,
 			);
 			path = DailyTasks;
@@ -181,6 +184,7 @@
 				845F080420514BF500FF2673 /* TaskModelCoreData.xcdatamodeld in Sources */,
 				84282C92204F840A0040BC7A /* UIColor+theme.swift in Sources */,
 				848977C6205DA26800C64319 /* DailyTaskListCell.swift in Sources */,
+				841807C0205F547E002CD7AF /* DailyTasksViewController+Delegate+CreateDailyTaskViewController.swift in Sources */,
 				84C58B522051E8BD009F3E91 /* DailyTasksViewController+UITableView.swift in Sources */,
 				84282C82204F83110040BC7A /* DailyTasksViewController.swift in Sources */,
 				84C58B5720545282009F3E91 /* Cutomizations.swift in Sources */,
