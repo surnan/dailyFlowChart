@@ -42,6 +42,8 @@ extension DailyTasksViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (rowAction, indexPath) in
             let company = self.tasks[indexPath.row]
             print("Deletion Action chosen", company)
@@ -63,7 +65,10 @@ extension DailyTasksViewController {
         
         let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: editHandlerFunction)
         editAction.backgroundColor = UIColor.green
-        return [deleteAction, editAction]
+        
+        let childFlowAction = UITableViewRowAction(style: .normal, title: "Child", handler: handleChildFlowAction)
+        childFlowAction.backgroundColor = UIColor.purple
+        return [deleteAction, editAction, childFlowAction]
     }
     
     //this function header exactly matches the closure parameters of 'deleteAction'
@@ -74,4 +79,9 @@ extension DailyTasksViewController {
         let myNavController = UINavigationController(rootViewController: myCreateDailyTaskViewController)
         present(myNavController, animated: true, completion: nil)
     }
+    
+    private func handleChildFlowAction(action: UITableViewRowAction, indexPath: IndexPath){
+        print("Flow Action Selected@@@@")
+    }
+    
 }

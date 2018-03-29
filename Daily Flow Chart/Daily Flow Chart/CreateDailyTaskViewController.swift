@@ -36,6 +36,7 @@ class CreateDailyTaskViewController: UIViewController, UIImagePickerControllerDe
     let nameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter Name"
+        textField.textAlignment = .center
         return textField
     }()
     
