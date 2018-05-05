@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-protocol CreateDailyTaskViewControllerDelegate {
+protocol CreateDailyTaskViewControllerDelegate { //declared as var in same file
     func addElementToTasks(task: Task)
     func editExistingTask(task:Task)
 }
@@ -17,6 +17,7 @@ protocol CreateDailyTaskViewControllerDelegate {
 
 class CreateDailyTaskViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    //without 'lazy': handler doesn't attach to image
     lazy var taskImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "select_photo_empty"))
         imageView.widthAnchor.constraint(equalToConstant: 50).isActive = true

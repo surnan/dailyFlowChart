@@ -13,7 +13,7 @@ struct CoreDataManager {
     static let shared = CoreDataManager()
     
     let persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "TaskModelCoreData")
+        let container = NSPersistentContainer(name: "TaskModelCoreData")  //left-pane-file-name
         container.loadPersistentStores(completionHandler: { (_, err) in
             if let err = err {
                 fatalError("Unable to persistent container: \(err)")
